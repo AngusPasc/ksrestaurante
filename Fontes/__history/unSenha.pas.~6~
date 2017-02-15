@@ -1,0 +1,44 @@
+unit unSenha;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Imaging.pngimage,
+  Vcl.ExtCtrls;
+
+type
+  TForm1 = class(TForm)
+    edID_USU: TEdit;
+    edSENHA_USU: TEdit;
+    Button1: TButton;
+    Button2: TButton;
+    edNOME_USU: TEdit;
+    Label1: TLabel;
+    Label2: TLabel;
+    Image1: TImage;
+    procedure Image1MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+uses uDM, uCONSUSU;
+
+procedure TForm1.Image1MouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+begin
+         Application.CreateForm(TCONSUSU,CONSUSU);
+         CONSUSU.ShowModal;
+end;
+
+end.

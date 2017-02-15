@@ -1,0 +1,56 @@
+unit uDM;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
+  FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.VCLUI.Wait,
+  FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt, Data.DB,
+  Datasnap.DBClient, Datasnap.Provider, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client, FireDAC.Phys.FB, FireDAC.Phys.FBDef;
+
+type
+  TDM = class(TDataModule)
+    Banco: TFDConnection;
+    Transacao: TFDTransaction;
+    qryUSU: TFDQuery;
+    dspUSU: TDataSetProvider;
+    cdsUSU: TClientDataSet;
+    dsUSU: TDataSource;
+    qryCONSULTA: TFDQuery;
+    dspCONSULTA: TDataSetProvider;
+    cdsCONSULTA: TClientDataSet;
+    dsCONSULTA: TDataSource;
+    qryCAT: TFDQuery;
+    dspCAT: TDataSetProvider;
+    cdsCAT: TClientDataSet;
+    dsCAT: TDataSource;
+    cdsCATID_CAT: TIntegerField;
+    cdsCATDESC_CAT: TStringField;
+    qryTRAVAR: TFDQuery;
+    dspTRAVAR: TDataSetProvider;
+    cdsTRAVAR: TClientDataSet;
+    dsTRAVAR: TDataSource;
+    qryITE: TFDQuery;
+    dspITE: TDataSetProvider;
+    cdsITE: TClientDataSet;
+    IntegerField1: TIntegerField;
+    StringField1: TStringField;
+    dsITE: TDataSource;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  DM: TDM;
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+{$R *.dfm}
+
+end.

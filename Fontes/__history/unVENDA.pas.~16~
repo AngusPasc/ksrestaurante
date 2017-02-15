@@ -1,0 +1,61 @@
+unit unVENDA;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ComCtrls, Vcl.Grids,
+  Vcl.DBGrids;
+
+type
+  TfrmVENDA = class(TForm)
+    DateTimePicker1: TDateTimePicker;
+    ComboBox1: TComboBox;
+    ComboBox2: TComboBox;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    edTotal: TEdit;
+    lbl: TLabel;
+    btNovo: TButton;
+    btFinalizar: TButton;
+    Label4: TLabel;
+    edCOD_PED: TEdit;
+    Button1: TButton;
+    BtItens: TButton;
+    btPagamento: TButton;
+    procedure btNovoClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+  nro :String;
+    { Public declarations }
+  end;
+
+var
+  frmVENDA: TfrmVENDA;
+
+implementation
+
+{$R *.dfm}
+
+uses uDM;
+
+procedure TfrmVENDA.btNovoClick(Sender: TObject);
+begin
+   DM.cdsCONSULTA.Close;
+   DM.cdsCONSULTA.CommandText := 'select gen_id(gen_ped, 1) as NRO from rdb$database';
+   DM.cdsCONSULTA.Open;
+   nro := DM.cdsCONSULTA.FieldByName('NRO').AsString;
+   edCOD_PED.Text := nro;
+
+   btNovo.Enabled := False;
+   btFinalizar.Enabled = True;
+   DateTimePicker1.Enabled = True;
+   ComboBox1.Enabled = True;
+   ComboBox.Enabled = True;
+end;
+
+
+
+end.

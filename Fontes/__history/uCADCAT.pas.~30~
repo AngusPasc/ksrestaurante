@@ -1,0 +1,174 @@
+unit uCADCAT;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.StdCtrls, Vcl.Mask,
+  Vcl.DBCtrls, Vcl.Grids, Vcl.DBGrids;
+
+type
+  TCADCAT = class(TForm)
+    DBGrid1: TDBGrid;
+    Label1: TLabel;
+    DataSource1: TDataSource;
+    Label2: TLabel;
+    dbeDESC_CAT: TDBEdit;
+    btIncluir: TButton;
+    btSalvar: TButton;
+    btExcluir: TButton;
+    btSair: TButton;
+    edID_CAT: TEdit;
+    procedure edID_CATExit(Sender: TObject);
+    procedure btIncluirClick(Sender: TObject);
+    procedure btSalvarClick(Sender: TObject);
+    procedure DBGrid1DblClick(Sender: TObject);
+    procedure edID_CATEnter(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure btExcluirClick(Sender: TObject);
+    procedure btSairClick(Sender: TObject);
+  private
+    { Private declarations }
+   procedure CarregarGrid;
+   function TestarCampos:Boolean;
+  public
+    { Public declarations }
+  end;
+
+var
+  CADCAT: TCADCAT;
+
+implementation
+
+{$R *.dfm}
+
+uses uDM;
+
+{ TCADCAT }
+
+procedure TCADCAT.btExcluirClick(Sender: TObject);
+begin
+        if MessageDlg('Deseja esta categoria?', mtConfirmation,
+              [mbYes, mbNo], 0) = mrYes then
+         begin
+                 DM.cdsCAT.Delete;
+                 DM.cdsCAT.ApplyUpdates(0);
+                 CarregarGrid;
+                 edID_CAT.SetFocus;
+         end;
+
+
+end;
+
+procedure TCADCAT.btIncluirClick(Sender: TObject);
+begin
+       if TestarCampos then
+       begin
+           DM.cdsCAT.FieldByName('ID_CAT').AsString := edID_CAT.Text;
+           DM.cdsCAT.ApplyUpdates(0);
+        //   DM.Transacao.Commit;
+           CarregarGrid;
+           edID_CAT.SetFocus;
+       end;
+end;
+
+procedure TCADCAT.btSairClick(Sender: TObject);
+begin
+      if btIncluir.Enabled or btExcluir.Enabled then
+      begin
+        showmessage('Registro em aberto!');
+      end
+      else if edID_CAT.Focused then
+
+          Close;
+end;
+
+procedure TCADCAT.btSalvarClick(Sender: TObject);
+begin
+      if TestarCampos then
+       begin
+           DM.cdsCAT.FieldByName('ID_CAT').AsString := edID_CAT.Text;
+           DM.cdsCAT.ApplyUpdates(0);
+       //    DM.Transacao.Commit;
+           CarregarGrid;
+           edID_CAT.SetFocus;
+       end;
+end;
+
+procedure TCADCAT.CarregarGrid;
+begin
+    DM.cdsCONSULTA.Close;
+    DM.cdsCONSULTA.CommandText := 'select * from categorias';
+    DM.cdsCONSULTA.Open;
+end;
+
+procedure TCADCAT.DBGrid1DblClick(Sender: TObject);
+begin
+        edID_CAT.Text := DM.cdsCONSULTA.FieldByName('ID_CAT').AsString;
+        edID_CATExit(Self);
+end;
+
+procedure TCADCAT.edID_CATEnter(Sender: TObject);
+begin
+        edID_CAT.Text := '0';
+        btIncluir.Enabled := False;
+        btSalvar.Enabled := False;
+        btExcluir.Enabled := False;
+        DM.cdsCAT.Close;
+end;
+
+procedure TCADCAT.edID_CATExit(Sender: TObject);
+begin
+      if edID_CAT.Text <> '' then
+      begin
+           DM.cdsCAT.Close;
+           DM.cdsCAT.CommandText := 'select * from categorias where id_cat = ' + edID_CAT.Text;
+           DM.cdsCAT.Open;
+           if DM.cdsCAT.IsEmpty then
+           begin
+                DM.cdsCAT.Insert;
+                btIncluir.Enabled := True;
+                btSalvar.Enabled := False;
+                btSair.Enabled := True;
+                btExcluir.Enabled := False;
+                dbeDESC_CAT.SetFocus;
+           end
+           else
+           begin
+                DM.cdsCAT.Edit;
+                btIncluir.Enabled := False;
+                btSalvar.Enabled := True;
+                btExcluir.Enabled := True;
+                btSair.Enabled := True;
+                dbeDESC_CAT.SetFocus;
+           end;
+      end;
+end;
+
+procedure TCADCAT.FormShow(Sender: TObject);
+begin
+      CarregarGrid;
+      edID_CAT.SetFocus;
+end;
+
+function TCADCAT.TestarCampos: Boolean;
+var
+erro :String;
+begin
+     erro := '';
+     if dbeDESC_CAT.Text = '' then
+         erro := erro + 'Descrição não informada!';
+
+
+      if erro = '' then
+      begin
+         Result := True;
+      end
+      else
+      begin
+        showmessage(erro);
+        Result := False;
+      end;
+end;
+
+end.

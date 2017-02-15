@@ -1,0 +1,15 @@
+object dmGerenciador: TdmGerenciador
+  OldCreateOrder = False
+  Height = 481
+  Width = 913
+  object FDConnection1: TFDConnection
+    Params.Strings = (
+      'Database=E:\Projetos\Restaurante\Banco\BANCO.FDB'
+      'User_Name=sysdba'
+      'Password=masterkey'
+      'DriverID=FB')
+    LoginPrompt = False
+    Left = 56
+    Top = 32
+  end
+end

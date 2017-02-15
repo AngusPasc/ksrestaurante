@@ -1,0 +1,84 @@
+unit unSenha;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Imaging.pngimage,
+  Vcl.ExtCtrls;
+
+type
+  TForm1 = class(TForm)
+    edID_USU: TEdit;
+    edSENHA_USU: TEdit;
+    Button1: TButton;
+    Button2: TButton;
+    edNOME_USU: TEdit;
+    Label1: TLabel;
+    Label2: TLabel;
+    Image1: TImage;
+    procedure Image1MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure edID_USUExit(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+uses uDM, uCONSUSU, uPrincipal;
+
+procedure TForm1.Button1Click(Sender: TObject);
+begin
+         DM.cdsCONSULTA.Close;
+         DM.cdsCONSULTA.CommandText := 'select * from usuario where id_usu = ' + edID_USU.Text +
+                                        ' and senha_usu=' + edSENHA_USU.Text;
+         DM.cdsCONSULTA.Open;
+         if DM.cdsCONSULTA.IsEmpty then
+         begin
+           showmessage('Usuário ou senha incorretos!');
+           edSENHA_USU.SetFocus;
+         end
+         else
+         begin
+             Application.CreateForm(TPrincipal,Principal);
+         end;
+end;
+
+procedure TForm1.edID_USUExit(Sender: TObject);
+begin
+         if edID_USU.Text <> '' then
+         begin
+           DM.cdsCONSULTA.Close;
+           DM.cdsCONSULTA.CommandText := 'select * from usuario where id_usu = ' + edID_USU.Text;
+           DM.cdsCONSULTA.Open;
+           if not DM.cdsCONSULTA.IsEmpty then
+           begin
+             edNOME_USU.Text := DM.cdsCONSULTA.FieldByName('NOME_USU').AsString;
+             edSENHA_USU.SetFocus;
+           end
+           else
+           begin
+             edNOME_USU.Text := 'Usuário não cadastrado';
+           end;
+         end;
+end;
+
+procedure TForm1.Image1MouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+begin
+         Application.CreateForm(TCONSUSU,CONSUSU);
+         CONSUSU.ShowModal;
+         edID_USU.Text := DM.cdsUSU.FieldByName('ID_USU').AsString;
+         edID_USUExit(Self);
+end;
+
+end.

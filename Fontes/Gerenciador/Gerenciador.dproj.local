@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2016/06/16 16:01:54.000.704,=C:\Users\Larissa\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2016/06/16 16:07:33.000.219,C:\Users\Larissa\Documents\Embarcadero\Studio\Projects\Unit1.pas=E:\Projetos\Restaurante\Fontes\Gerenciador\frmSenha.pas</Transaction>
+    <Transaction>2016/06/16 16:07:33.000.219,C:\Users\Larissa\Documents\Embarcadero\Studio\Projects\Unit1.dfm=E:\Projetos\Restaurante\Fontes\Gerenciador\frmSenha.dfm</Transaction>
+    <Transaction>2016/06/16 16:07:47.000.015,C:\Users\Larissa\Documents\Embarcadero\Studio\Projects\Project1.dproj=E:\Projetos\Restaurante\Fontes\Gerenciador\Gerenciador.dproj</Transaction>
+    <Transaction>2016/06/16 16:08:45.000.510,=E:\Projetos\Restaurante\Fontes\Gerenciador\Unit2.pas</Transaction>
+    <Transaction>2016/06/16 16:09:01.000.460,E:\Projetos\Restaurante\Fontes\Gerenciador\Unit2.dfm=E:\Projetos\Restaurante\Fontes\Gerenciador\frmPrincipal.dfm</Transaction>
+    <Transaction>2016/06/16 16:09:01.000.460,E:\Projetos\Restaurante\Fontes\Gerenciador\Unit2.pas=E:\Projetos\Restaurante\Fontes\Gerenciador\frmPrincipal.pas</Transaction>
+    <Transaction>2016/06/16 16:24:28.000.470,=E:\Projetos\Restaurante\Fontes\Gerenciador\Unit1.pas</Transaction>
+    <Transaction>2016/06/16 16:26:49.000.309,E:\Projetos\Restaurante\Fontes\Gerenciador\Unit1.dfm=E:\Projetos\Restaurante\Fontes\Gerenciador\uDMGERENCIADOR.dfm</Transaction>
+    <Transaction>2016/06/16 16:26:49.000.309,E:\Projetos\Restaurante\Fontes\Gerenciador\Unit1.pas=E:\Projetos\Restaurante\Fontes\Gerenciador\uDMGERENCIADOR.pas</Transaction>
+    <Transaction>2016/06/16 16:31:56.000.551,=E:\Projetos\Restaurante\Fontes\Gerenciador\Unit2.pas</Transaction>
+    <Transaction>2016/06/16 16:32:41.000.768,E:\Projetos\Restaurante\Fontes\Gerenciador\Unit2.pas=E:\Projetos\Restaurante\Fontes\Gerenciador\unUsuario.pas</Transaction>
+    <Transaction>2016/06/16 16:32:41.000.768,E:\Projetos\Restaurante\Fontes\Gerenciador\Unit2.dfm=E:\Projetos\Restaurante\Fontes\Gerenciador\unUsuario.dfm</Transaction>
+  </Transactions>
+</BorlandProject>
