@@ -190,6 +190,7 @@ object frmITENSVENDA: TfrmITENSVENDA
     Height = 25
     Caption = '?'
     TabOrder = 12
+    OnClick = Button6Click
   end
   object dbeQTD_IPE: TDBEdit
     Left = 16

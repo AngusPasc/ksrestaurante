@@ -40,6 +40,7 @@ type
     procedure btCancelarClick(Sender: TObject);
     procedure btSalvarClick(Sender: TObject);
     procedure btExcluirClick(Sender: TObject);
+    procedure Button6Click(Sender: TObject);
   private
     { Private declarations }
     procedure CarregarItens;
@@ -55,7 +56,7 @@ implementation
 
 {$R *.dfm}
 
-uses uDM;
+uses uDM, uCONSITE;
 
 procedure TfrmITENSVENDA.btCancelarClick(Sender: TObject);
 begin
@@ -86,6 +87,18 @@ begin
   edCOD_IPE.SetFocus;
 end;
 
+procedure TfrmITENSVENDA.Button6Click(Sender: TObject);
+begin
+   Application.CreateForm(TFrmConsite,frmconsite);
+   frmconsite.ShowModal;
+   if NOT DM.cdsITE.IsEmpty then
+   begin
+     dbeIDITE_IPE.Text := DM.cdsite.FieldByName('id_ite').AsString;
+     dbeIDITE_IPEExit(Self);
+   end;
+
+end;
+
 procedure TfrmITENSVENDA.CarregarItens;
 begin
    DM.cdsCONSULTA.Close;
@@ -97,25 +110,26 @@ end;
 procedure TfrmITENSVENDA.dbeIDITE_IPEExit(Sender: TObject);
 begin
     if dbeIDITE_IPE.Text <> '' then
-
-    DM.cdsTRAVAR.Close;
-    DM.cdsTRAVAR.CommandText := 'select * from ITENS where ID_ITE = ' + dbeIDITE_IPE.Text;
-    DM.cdsTRAVAR.Open;
-    if not DM.cdsTRAVAR.IsEmpty then
     begin
-      edDESC_ITE.Text := DM.cdsTRAVAR.FieldByName('DESC_ITE').AsString;
-      edVLRUNI_IPE.Text := DM.cdsTRAVAR.FieldByName('PRECO_ITE').AsString;
+       DM.cdsCONSULTA.Close;
+       DM.cdsCONSULTA.CommandText := 'select * from itens where id_ite = ' + dbeIDITE_IPE.Text;
+       DM.cdsCONSULTA.Open;
+       if not DM.cdsCONSULTA.IsEmpty then
+       begin
+          edDESC_ITE.Text := DM.cdsCONSULTA.FieldByName('DESC_ITE').AsString;
+          edVLRUNI_IPE.Text := DM.cdsCONSULTA.FieldByName('PRECO_ITE').AsString;
+       end
+       else
+          edDESC_ITE.Text := 'Item não cadastrado';
 
-    end
-    else
-       edDESC_ITE.Text := 'Item não cadastrado';
-
+    dbeQTD_IPE.SetFocus;
+    end;
 end;
 
 procedure TfrmITENSVENDA.dbeQTD_IPEExit(Sender: TObject);
 begin
      if (dbeQTD_IPE.Text <> '') and ( edVLRUNI_IPE.Text <> '') then
-          edTotalItem.Text := VartoStr(strtoint(dbeQTD_IPE.Text) * StrtoInt(edVLRUNI_IPE.Text));
+          edTotalItem.Text := VartoStr(StrToCurr(dbeQTD_IPE.Text) * StrToCurr(edVLRUNI_IPE.Text));
 end;
 
 procedure TfrmITENSVENDA.edCOD_IPEEnter(Sender: TObject);

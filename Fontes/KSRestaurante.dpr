@@ -4,14 +4,15 @@ uses
   Vcl.Forms,
   unSenha in 'unSenha.pas' {Form1},
   uDM in 'uDM.pas' {DM: TDataModule},
-  uCONSUSU in 'uCONSUSU.pas' {CONSUSU},
+  uCONSITE in 'uCONSITE.pas' {frmCONSITE},
   uPrincipal in 'uPrincipal.pas' {Principal},
   uCADITE in 'uCADITE.pas' {CADITE},
   uCADCAT in 'uCADCAT.pas' {CADCAT},
   uABRIRCXA in 'uABRIRCXA.pas' {ABRIRCXA},
   unPEDIDO in 'unPEDIDO.pas' {PEDIDO},
   unVENDA in 'unVENDA.pas' {frmVENDA},
-  unITENSVENDA in 'unITENSVENDA.pas' {frmITENSVENDA};
+  unITENSVENDA in 'unITENSVENDA.pas' {frmITENSVENDA},
+  uCONSUSU in 'uCONSUSU.pas' {CONSUSU};
 
 {$R *.res}
 
@@ -22,7 +23,5 @@ begin
   Application.CreateForm(TDM, DM);
   Application.CreateForm(TABRIRCXA, ABRIRCXA);
   Application.CreateForm(TPEDIDO, PEDIDO);
-  Application.CreateForm(TfrmVENDA, frmVENDA);
-  Application.CreateForm(TfrmITENSVENDA, frmITENSVENDA);
   Application.Run;
 end.
