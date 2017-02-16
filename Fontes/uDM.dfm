@@ -5,8 +5,8 @@ object DM: TDM
   object Banco: TFDConnection
     Params.Strings = (
       
-        'Database=C:\Users\Elison\Documents\E\Projetos\Restaurante\Banco\' +
-        'BANCO.FDB'
+        'Database=C:\Users\Larissa\Documents\GitHub\ksrestaurante\Banco\B' +
+        'ANCO.FDB'
       'User_Name=sysdba'
       'Password=masterkey'
       'DriverID=FB')

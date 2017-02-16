@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Grids, Vcl.DBGrids,
-  Vcl.Mask, Vcl.DBCtrls;
+  Vcl.Mask, Vcl.DBCtrls, Data.DB;
 
 type
   TfrmITENSVENDA = class(TForm)
@@ -114,7 +114,8 @@ end;
 
 procedure TfrmITENSVENDA.dbeQTD_IPEExit(Sender: TObject);
 begin
-     edTotalItem.Text := VartoStr(strtoint(dbeQTD_IPE.Text) * StrtoInt(edVLRUNI_IPE.Text));
+     if (dbeQTD_IPE.Text <> '') and ( edVLRUNI_IPE.Text <> '') then
+          edTotalItem.Text := VartoStr(strtoint(dbeQTD_IPE.Text) * StrtoInt(edVLRUNI_IPE.Text));
 end;
 
 procedure TfrmITENSVENDA.edCOD_IPEEnter(Sender: TObject);
