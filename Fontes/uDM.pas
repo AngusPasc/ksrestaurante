@@ -46,6 +46,10 @@ type
     dspITEM_PEDIDO: TDataSetProvider;
     cdsITEM_PEDIDO: TClientDataSet;
     dsITEM_PEDIDO: TDataSource;
+    qryGRID: TFDQuery;
+    dspGRID: TDataSetProvider;
+    cdsGRID: TClientDataSet;
+    dsGRID: TDataSource;
   private
     { Private declarations }
   public

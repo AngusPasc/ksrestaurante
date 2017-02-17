@@ -69,13 +69,14 @@ object frmITENSVENDA: TfrmITENSVENDA
     Top = 211
     Width = 503
     Height = 169
-    DataSource = DM.dsCONSULTA
+    DataSource = DM.dsGRID
     TabOrder = 8
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
     TitleFont.Height = -11
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
+    OnDblClick = DBGrid1DblClick
     Columns = <
       item
         Expanded = False
@@ -182,6 +183,7 @@ object frmITENSVENDA: TfrmITENSVENDA
     Height = 25
     Caption = 'Sair'
     TabOrder = 7
+    OnClick = btSairClick
   end
   object Button6: TButton
     Left = 77

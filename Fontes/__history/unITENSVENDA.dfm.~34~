@@ -52,14 +52,14 @@ object frmITENSVENDA: TfrmITENSVENDA
   end
   object Label6: TLabel
     Left = 105
-    Top = 135
+    Top = 130
     Width = 27
     Height = 13
     Caption = 'Pre'#231'o'
   end
   object Label7: TLabel
     Left = 200
-    Top = 135
+    Top = 130
     Width = 49
     Height = 13
     Caption = 'Total Item'
@@ -69,7 +69,7 @@ object frmITENSVENDA: TfrmITENSVENDA
     Top = 211
     Width = 503
     Height = 169
-    DataSource = DM.dsCONSULTA
+    DataSource = DM.dsGRID
     TabOrder = 8
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
@@ -144,6 +144,7 @@ object frmITENSVENDA: TfrmITENSVENDA
     Caption = 'Incluir'
     Enabled = False
     TabOrder = 3
+    OnClick = btIncluirClick
   end
   object btSalvar: TButton
     Left = 129
@@ -153,6 +154,7 @@ object frmITENSVENDA: TfrmITENSVENDA
     Caption = 'Salvar'
     Enabled = False
     TabOrder = 4
+    OnClick = btSalvarClick
   end
   object btExcluir: TButton
     Left = 210
@@ -162,6 +164,7 @@ object frmITENSVENDA: TfrmITENSVENDA
     Caption = 'Excluir'
     Enabled = False
     TabOrder = 5
+    OnClick = btExcluirClick
   end
   object btCancelar: TButton
     Left = 291
@@ -169,8 +172,8 @@ object frmITENSVENDA: TfrmITENSVENDA
     Width = 75
     Height = 25
     Caption = 'Cancelar'
-    Enabled = False
     TabOrder = 6
+    OnClick = btCancelarClick
   end
   object btSair: TButton
     Left = 372
@@ -187,6 +190,7 @@ object frmITENSVENDA: TfrmITENSVENDA
     Height = 25
     Caption = '?'
     TabOrder = 12
+    OnClick = Button6Click
   end
   object dbeQTD_IPE: TDBEdit
     Left = 16
@@ -196,6 +200,7 @@ object frmITENSVENDA: TfrmITENSVENDA
     DataField = 'QTD_IPE'
     DataSource = DM.dsITEM_PEDIDO
     TabOrder = 2
+    OnExit = dbeQTD_IPEExit
   end
   object dbeIDITE_IPE: TDBEdit
     Left = 16
@@ -209,7 +214,7 @@ object frmITENSVENDA: TfrmITENSVENDA
   end
   object edVLRUNI_IPE: TEdit
     Left = 104
-    Top = 149
+    Top = 146
     Width = 74
     Height = 21
     Color = clInactiveBorder
@@ -218,7 +223,7 @@ object frmITENSVENDA: TfrmITENSVENDA
   end
   object edTotalItem: TEdit
     Left = 199
-    Top = 149
+    Top = 146
     Width = 74
     Height = 21
     Color = clInactiveBorder

@@ -129,7 +129,7 @@ end;
 procedure TfrmITENSVENDA.dbeQTD_IPEExit(Sender: TObject);
 begin
      if (dbeQTD_IPE.Text <> '') and ( edVLRUNI_IPE.Text <> '') then
-          edTotalItem.Text := VartoStr(strtoint(dbeQTD_IPE.Text) * StrtoInt(edVLRUNI_IPE.Text));
+          edTotalItem.Text := VartoStr(StrToCurr(dbeQTD_IPE.Text) * StrToCurr(edVLRUNI_IPE.Text));
 end;
 
 procedure TfrmITENSVENDA.edCOD_IPEEnter(Sender: TObject);

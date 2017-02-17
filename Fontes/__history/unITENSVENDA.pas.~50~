@@ -101,10 +101,10 @@ end;
 
 procedure TfrmITENSVENDA.CarregarItens;
 begin
-   DM.cdsCONSULTA.Close;
-   DM.cdsCONSULTA.CommandText := 'select * from ITEM_PEDIDO LEFT OUTER JOIN ITENS ON ITEM_PEDIDO.IDITE_IPE =   ITENS.ID_ITE ' +
+   DM.cdsGRID.Close;
+   DM.cdsGRID.CommandText := 'select * from ITEM_PEDIDO LEFT OUTER JOIN ITENS ON ITEM_PEDIDO.IDITE_IPE =   ITENS.ID_ITE ' +
                                  ' WHERE CODPED_IPE = ' + edCODPED_IPE.Text    ;
-   DM.cdsCONSULTA.Open;
+   DM.cdsGRID.Open;
 end;
 
 procedure TfrmITENSVENDA.dbeIDITE_IPEExit(Sender: TObject);
@@ -115,7 +115,10 @@ begin
        DM.cdsCONSULTA.CommandText := 'select * from itens where id_ite = ' + dbeIDITE_IPE.Text;
        DM.cdsCONSULTA.Open;
        if not DM.cdsCONSULTA.IsEmpty then
-          edDESC_ITE.Text := DM.cdsCONSULTA.FieldByName('DESC_ITE').AsString
+       begin
+          edDESC_ITE.Text := DM.cdsCONSULTA.FieldByName('DESC_ITE').AsString;
+          edVLRUNI_IPE.Text := DM.cdsCONSULTA.FieldByName('PRECO_ITE').AsString;
+       end
        else
           edDESC_ITE.Text := 'Item não cadastrado';
 
@@ -126,7 +129,7 @@ end;
 procedure TfrmITENSVENDA.dbeQTD_IPEExit(Sender: TObject);
 begin
      if (dbeQTD_IPE.Text <> '') and ( edVLRUNI_IPE.Text <> '') then
-          edTotalItem.Text := VartoStr(strtoint(dbeQTD_IPE.Text) * StrtoInt(edVLRUNI_IPE.Text));
+          edTotalItem.Text := VartoStr(StrToCurr(dbeQTD_IPE.Text) * StrToCurr(edVLRUNI_IPE.Text));
 end;
 
 procedure TfrmITENSVENDA.edCOD_IPEEnter(Sender: TObject);

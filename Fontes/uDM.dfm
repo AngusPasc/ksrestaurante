@@ -180,51 +180,76 @@ object DM: TDM
   object qryPEDIDO: TFDQuery
     Connection = Banco
     Transaction = Transacao
-    Left = 336
-    Top = 168
+    Left = 352
+    Top = 192
   end
   object dspPEDIDO: TDataSetProvider
     DataSet = qryPEDIDO
     Options = [poAllowCommandText, poUseQuoteChar]
-    Left = 400
-    Top = 168
+    Left = 416
+    Top = 192
   end
   object cdsPEDIDO: TClientDataSet
     Aggregates = <>
     CommandText = 'select * from pedido'
     Params = <>
     ProviderName = 'dspPEDIDO'
-    Left = 456
-    Top = 168
+    Left = 472
+    Top = 192
   end
   object dsPEDIDO: TDataSource
     DataSet = cdsPEDIDO
-    Left = 512
-    Top = 168
+    Left = 528
+    Top = 192
   end
   object qryITEM_PEDIDO: TFDQuery
     Connection = Banco
     Transaction = Transacao
-    Left = 336
-    Top = 216
+    Left = 352
+    Top = 240
   end
   object dspITEM_PEDIDO: TDataSetProvider
     DataSet = qryITEM_PEDIDO
     Options = [poAllowCommandText, poUseQuoteChar]
-    Left = 400
-    Top = 216
+    Left = 416
+    Top = 240
   end
   object cdsITEM_PEDIDO: TClientDataSet
     Aggregates = <>
     CommandText = 'select * from item_pedido'
     Params = <>
     ProviderName = 'dspITEM_PEDIDO'
-    Left = 456
-    Top = 216
+    Left = 472
+    Top = 240
   end
   object dsITEM_PEDIDO: TDataSource
     DataSet = cdsITEM_PEDIDO
-    Left = 512
-    Top = 216
+    Left = 528
+    Top = 240
+  end
+  object qryGRID: TFDQuery
+    Connection = Banco
+    Transaction = Transacao
+    Left = 256
+    Top = 128
+  end
+  object dspGRID: TDataSetProvider
+    DataSet = qryGRID
+    Options = [poAllowCommandText, poUseQuoteChar]
+    Left = 328
+    Top = 128
+  end
+  object cdsGRID: TClientDataSet
+    Aggregates = <>
+    CommandText = 'select * from usuario'
+    Params = <>
+    ProviderName = 'dspGRID'
+    Left = 400
+    Top = 128
+  end
+  object dsGRID: TDataSource
+    DataSet = cdsGRID
+    Left = 472
+    Top = 128
   end
 end
