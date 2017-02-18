@@ -1,0 +1,24 @@
+unit unRELVENDA;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs;
+
+type
+  TfrmRELVENDA = class(TForm)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmRELVENDA: TfrmRELVENDA;
+
+implementation
+
+{$R *.dfm}
+
+end.

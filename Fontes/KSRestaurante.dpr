@@ -12,7 +12,8 @@ uses
   unPEDIDO in 'unPEDIDO.pas' {PEDIDO},
   unVENDA in 'unVENDA.pas' {frmVENDA},
   unITENSVENDA in 'unITENSVENDA.pas' {frmITENSVENDA},
-  uCONSUSU in 'uCONSUSU.pas' {CONSUSU};
+  uCONSUSU in 'uCONSUSU.pas' {CONSUSU},
+  unRELVENDA in 'unRELVENDA.pas' {frmRELVENDA};
 
 {$R *.res}
 
@@ -23,5 +24,6 @@ begin
   Application.CreateForm(TDM, DM);
   Application.CreateForm(TABRIRCXA, ABRIRCXA);
   Application.CreateForm(TPEDIDO, PEDIDO);
+  Application.CreateForm(TfrmRELVENDA, frmRELVENDA);
   Application.Run;
 end.

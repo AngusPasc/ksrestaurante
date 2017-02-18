@@ -43,4 +43,20 @@ object frmCONSITE: TfrmCONSITE
         Visible = True
       end>
   end
+  object edConsulta: TEdit
+    Left = 32
+    Top = 172
+    Width = 273
+    Height = 21
+    TabOrder = 1
+  end
+  object Button1: TButton
+    Left = 336
+    Top = 168
+    Width = 89
+    Height = 25
+    Caption = 'Pesquisar'
+    TabOrder = 2
+    OnClick = Button1Click
+  end
 end

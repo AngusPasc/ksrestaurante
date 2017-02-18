@@ -134,7 +134,7 @@ begin
                                  ' item_pedido where item_pedido.codped_ipe = ' + edCODPED_IPE.Text;
    DM.cdsCONSULTA.Open;
    if not DM.cdsCONSULTA.IsEmpty then
-      edTotal.Text := 'R$' + DM.cdsCONSULTA.FieldByName('total').AsString;
+      edTotal.Text := 'R$' + FormatFloat(',0.00', StrToFloat(DM.cdsCONSULTA.FieldByName('total').AsString));
 end;
 
 procedure TfrmITENSVENDA.CarregarItens;
@@ -155,7 +155,7 @@ begin
        if not DM.cdsCONSULTA.IsEmpty then
        begin
           edDESC_ITE.Text := DM.cdsCONSULTA.FieldByName('DESC_ITE').AsString;
-          edVLRUNI_IPE.Text := DM.cdsCONSULTA.FieldByName('PRECO_ITE').AsString;
+          edVLRUNI_IPE.Text := FormatFloat(',0.00', StrToFloat(DM.cdsCONSULTA.FieldByName('PRECO_ITE').AsString));
        end
        else
           edDESC_ITE.Text := 'Item não cadastrado';
@@ -167,7 +167,7 @@ end;
 procedure TfrmITENSVENDA.dbeQTD_IPEExit(Sender: TObject);
 begin
      if (dbeQTD_IPE.Text <> '') and ( edVLRUNI_IPE.Text <> '') then
-          edTotalItem.Text := VartoStr(StrToCurr(dbeQTD_IPE.Text) * StrToCurr(edVLRUNI_IPE.Text));
+          edTotalItem.Text := FormatFloat(',0.00', StrToFloat(VartoStr(StrToCurr(dbeQTD_IPE.Text) * StrToCurr(edVLRUNI_IPE.Text))));
 end;
 
 procedure TfrmITENSVENDA.DBGrid1DblClick(Sender: TObject);
@@ -188,7 +188,7 @@ end;
 
 procedure TfrmITENSVENDA.edCOD_IPEExit(Sender: TObject);
 begin
-   if edCOD_IPE.Text <> '' then
+   if (edCOD_IPE.Text <> '') and  (not btSair.Focused) then
     begin
           DM.cdsITEM_PEDIDO.Close;
           DM.cdsITEM_PEDIDO.CommandText := 'select * from ITEM_PEDIDO where COD_IPE = ' + edCOD_IPE.Text +
@@ -214,8 +214,10 @@ end;
 
 procedure TfrmITENSVENDA.FormShow(Sender: TObject);
 begin
-     edTotal.Text := 'R$ 0,00';
+     edTotal.Text := 'R$ 0.00';
      CarregarItens;
+     if not dm.cdsGRID.IsEmpty then
+         CalcularTotal;
 end;
 
 function TfrmITENSVENDA.GerarSequencia: Integer;

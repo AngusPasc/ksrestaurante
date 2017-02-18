@@ -3,7 +3,7 @@ object frmVENDA: TfrmVENDA
   Top = 0
   Caption = 'Venda'
   ClientHeight = 210
-  ClientWidth = 626
+  ClientWidth = 442
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -15,13 +15,6 @@ object frmVENDA: TfrmVENDA
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
-  object Label1: TLabel
-    Left = 248
-    Top = 57
-    Width = 102
-    Height = 13
-    Caption = 'Forma de Pagamento'
-  end
   object Label2: TLabel
     Left = 139
     Top = 57
@@ -37,14 +30,14 @@ object frmVENDA: TfrmVENDA
     Caption = 'Data'
   end
   object lbl: TLabel
-    Left = 472
+    Left = 312
     Top = 57
     Width = 24
     Height = 13
     Caption = 'Total'
   end
   object Label4: TLabel
-    Left = 472
+    Left = 312
     Top = 1
     Width = 52
     Height = 13
@@ -82,21 +75,8 @@ object frmVENDA: TfrmVENDA
       '9'
       '10')
   end
-  object ComboBox2: TComboBox
-    Left = 248
-    Top = 72
-    Width = 145
-    Height = 21
-    Enabled = False
-    ItemIndex = 0
-    TabOrder = 2
-    Text = 'Dinheiro'
-    Items.Strings = (
-      'Dinheiro'
-      'Cart'#227'o')
-  end
   object edTotal: TEdit
-    Left = 472
+    Left = 312
     Top = 72
     Width = 121
     Height = 24
@@ -108,7 +88,7 @@ object frmVENDA: TfrmVENDA
     Font.Style = [fsBold]
     ParentFont = False
     ReadOnly = True
-    TabOrder = 3
+    TabOrder = 2
   end
   object btNovo: TButton
     Left = 8
@@ -116,7 +96,7 @@ object frmVENDA: TfrmVENDA
     Width = 75
     Height = 25
     Caption = 'Novo'
-    TabOrder = 4
+    TabOrder = 3
     OnClick = btNovoClick
   end
   object btFinalizar: TButton
@@ -126,10 +106,11 @@ object frmVENDA: TfrmVENDA
     Height = 25
     Caption = 'Finalizar'
     Enabled = False
-    TabOrder = 5
+    TabOrder = 4
+    OnClick = btFinalizarClick
   end
   object edCOD_PED: TEdit
-    Left = 472
+    Left = 312
     Top = 16
     Width = 121
     Height = 24
@@ -141,7 +122,7 @@ object frmVENDA: TfrmVENDA
     Font.Style = [fsBold]
     ParentFont = False
     ReadOnly = True
-    TabOrder = 6
+    TabOrder = 5
   end
   object BtConsultar: TButton
     Left = 170
@@ -149,7 +130,7 @@ object frmVENDA: TfrmVENDA
     Width = 75
     Height = 25
     Caption = 'Consultar'
-    TabOrder = 7
+    TabOrder = 6
   end
   object BtItens: TButton
     Left = 8
@@ -158,16 +139,30 @@ object frmVENDA: TfrmVENDA
     Height = 41
     Caption = 'Itens'
     Enabled = False
-    TabOrder = 8
+    TabOrder = 7
     OnClick = BtItensClick
   end
-  object btPagamento: TButton
+  object RadioGroup1: TRadioGroup
     Left = 139
-    Top = 128
-    Width = 113
-    Height = 41
+    Top = 112
+    Width = 185
+    Height = 81
     Caption = 'Pagamento'
-    Enabled = False
+    ItemIndex = 0
+    Items.Strings = (
+      'Dinheiro'
+      'Cart'#227'o D'#233'bito'
+      'Cart'#227'o Cr'#233'dito')
+    TabOrder = 8
+  end
+  object Memo1: TMemo
+    Left = 464
+    Top = 136
+    Width = 185
+    Height = 89
+    Lines.Strings = (
+      'Memo1')
     TabOrder = 9
+    Visible = False
   end
 end
