@@ -25,11 +25,13 @@ type
     Sair1: TMenuItem;
     Almoo1: TMenuItem;
     Jantar1: TMenuItem;
+    VendasporPerodo1: TMenuItem;
     procedure Sair1Click(Sender: TObject);
     procedure Categorias1Click(Sender: TObject);
     procedure Produtos1Click(Sender: TObject);
     procedure Almoo1Click(Sender: TObject);
     procedure Jantar1Click(Sender: TObject);
+    procedure VendasporPerodo1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -43,7 +45,7 @@ implementation
 
 {$R *.dfm}
 
-uses uCADCAT, uCADITE, unPEDIDO, unVENDA;
+uses uCADCAT, uCADITE, unPEDIDO, unVENDA, unRELVENDA;
 
 procedure TPrincipal.Almoo1Click(Sender: TObject);
 begin
@@ -76,6 +78,12 @@ begin
          begin
                  Close;
          end;
+end;
+
+procedure TPrincipal.VendasporPerodo1Click(Sender: TObject);
+begin
+  Application.CreateForm(TfrmRelVenda,frmRelVenda);
+  frmRelvenda.ShowModal;
 end;
 
 end.

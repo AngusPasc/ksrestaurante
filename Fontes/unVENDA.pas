@@ -72,6 +72,10 @@ begin
    DM.cdsPEDIDO.ApplyUpdates(0);
    GerarPedido;
    ImprimirPedido;
+   btFinalizar.Enabled := false;
+   btNovo.Enabled := True;
+   edTotal.Clear;
+   edCOD_PED.Clear;
 end;
 
 procedure TfrmVENDA.BtItensClick(Sender: TObject);
@@ -106,6 +110,7 @@ begin
    ComboBox1.Enabled := True;
 
    BtItens.Enabled := True;
+   btFinalizar.Enabled := True;
 
 end;
 
@@ -159,7 +164,7 @@ Memo1.Lines.Add('');
      end;
      Memo1.Lines.Add('');
 
-     Memo1.Lines.Add('Item                      Qtd    Vlr.Uni    Valor');
+     Memo1.Lines.Add('Item                   Qtd    Vlr.Uni    Valor');
      DM.cdsCONSULTA.Close;
      DM.cdsCONSULTA.CommandText := 'select * from item_pedido ' +
                                    ' left outer join itens on itens.id_ite = item_pedido.idite_ipe' +
@@ -168,7 +173,7 @@ Memo1.Lines.Add('');
      DM.cdsCONSULTA.First;
      while not DM.cdsCONSULTA.Eof do
      begin
-      Memo1.Lines.Add(PreencherString(DM.cdsCONSULTA.FieldByName('DESC_ITE').AsString,26) +
+      Memo1.Lines.Add(PreencherString(DM.cdsCONSULTA.FieldByName('DESC_ITE').AsString,23) +
                         PreencherString(FormatFloat(',0.00', StrToFloat(vartostr(DM.cdsCONSULTA.FieldByName('QTD_IPE').AsCurrency))),8) +
                         PreencherString(FormatFloat(',0.00', StrToFloat(vartostr(DM.cdsCONSULTA.FieldByName('VLRUNI_IPE').AsCurrency))),10) +
                         PreencherString(FormatFloat(',0.00', StrToFloat(vartostr(DM.cdsCONSULTA.FieldByName('QTD_IPE').AsCurrency * DM.cdsCONSULTA.FieldByName('VLRUNI_IPE').AsCurrency)))
@@ -178,7 +183,7 @@ Memo1.Lines.Add('');
      Memo1.Lines.Add('');
      Memo1.Lines.Add('');
      Memo1.Lines.Add('');
-     Memo1.Lines.Add('                                   Total: ' + edTotal.Text );
+     Memo1.Lines.Add('                                Total: ' + edTotal.Text );
 end;
 
 function TfrmVenda.PreencherString(s : string;tam:Integer) : string;

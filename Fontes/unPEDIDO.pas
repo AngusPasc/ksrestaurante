@@ -21,6 +21,7 @@ type
     Image2: TImage;
     Memo1: TMemo;
     Button2: TButton;
+    RadioGroup1: TRadioGroup;
     procedure Button1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure Image1MouseDown(Sender: TObject; Button: TMouseButton;
@@ -40,6 +41,7 @@ type
    procedure AtualizarPedido;
    function PreencherString(s : string;tam:Integer) : string;
    procedure ImprimirPedido;
+   procedure GravarPagamento;
   end;
 
 var
@@ -74,7 +76,7 @@ begin
       DM.cdsCONSULTA.First;
       while not DM.cdsCONSULTA.eof do
       begin
-        Memo1.Lines.Add(PreencherString(DM.cdsCONSULTA.FieldByName('DESC_ITE').AsString,29) +
+        Memo1.Lines.Add(PreencherString(DM.cdsCONSULTA.FieldByName('DESC_ITE').AsString,26) +
                         PreencherString(vartostr(DM.cdsCONSULTA.FieldByName('QTD_IPE').AsCurrency),8) +
                         PreencherString(vartostr(DM.cdsCONSULTA.FieldByName('VLRUNI_IPE').AsCurrency),8) +
                         PreencherString(
@@ -93,7 +95,9 @@ end;
 
 procedure TPEDIDO.Button2Click(Sender: TObject);
 begin
+GravarPagamento;
 ImprimirPedido;
+
 end;
 
 procedure TPEDIDO.ImprimirPedido;
@@ -127,7 +131,9 @@ end;
 procedure TPEDIDO.CarregarItens;
 begin
        DM.cdsITE.Close;
-       DM.cdsITE.CommandText := 'select * from itens';
+       DM.cdsITE.CommandText := 'select * from itens' +
+                                ' left outer join categorias on itens.idcat_ite = categorias.id_cat' +
+                                ' where categorias.dia_cat = 1';
        DM.cdsITE.Open;
 end;
 
@@ -149,6 +155,19 @@ begin
      DM.cdsPEDIDO.Post;
      seq_pedido :=  DM.cdsPEDIDO.FieldByName('COD_PED').AsInteger;
      DM.cdsPEDIDO.ApplyUpdates(0);
+
+end;
+
+procedure TPEDIDO.GravarPagamento;
+begin
+   DM.cdsTRAVAR.Close;
+   DM.cdsTRAVAR.CommandText := 'select * from pedido ' +
+                               ' where pedido.cod_ped = ' +  inttostr(Seq_pedido);
+   DM.cdsTRAVAR.Open;
+   DM.cdsTRAVAR.Edit;
+   DM.cdsTRAVAR.FieldByName('fpag_ped').AsInteger := RadioGroup1.ItemIndex;
+   DM.cdsTRAVAR.Post;
+   DM.cdsTRAVAR.ApplyUpdates(0);
 
 end;
 

@@ -124,7 +124,7 @@ object CADCAT: TCADCAT
     Width = 97
     Height = 17
     Caption = 'Almo'#231'o'
-    DataField = 'ALMOCO_CAT'
+    DataField = 'DIA_CAT'
     DataSource = DM.dsCAT
     TabOrder = 2
     ValueChecked = '1'
@@ -136,7 +136,7 @@ object CADCAT: TCADCAT
     Width = 97
     Height = 17
     Caption = 'Janta'
-    DataField = 'JANTA_CAT'
+    DataField = 'NOITE_CAT'
     DataSource = DM.dsCAT
     TabOrder = 3
     ValueChecked = '1'

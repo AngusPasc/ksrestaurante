@@ -45,7 +45,9 @@ end;
 procedure TfrmCONSITE.FormShow(Sender: TObject);
 begin
        DM.cdsITE.Close;
-       DM.cdsITE.CommandText := 'select * from itens';
+       DM.cdsITE.CommandText := 'select * from itens' +
+        ' left outer join categorias on itens.idcat_ite = categorias.id_cat' +
+                                ' where categorias.noite_cat = 1';
        DM.cdsITE.Open;
 end;
 

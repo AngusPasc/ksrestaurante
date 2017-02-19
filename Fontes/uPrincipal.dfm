@@ -3245,6 +3245,10 @@ object Principal: TPrincipal
     end
     object Relatrios1: TMenuItem
       Caption = 'Relat'#243'rios'
+      object VendasporPerodo1: TMenuItem
+        Caption = 'Vendas por Per'#237'odo'
+        OnClick = VendasporPerodo1Click
+      end
     end
     object Sair1: TMenuItem
       Caption = 'Sair'

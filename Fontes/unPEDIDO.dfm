@@ -31,7 +31,7 @@ object PEDIDO: TPEDIDO
   end
   object Label3: TLabel
     Left = 534
-    Top = 355
+    Top = 364
     Width = 24
     Height = 13
     Caption = 'Total'
@@ -1275,7 +1275,7 @@ object PEDIDO: TPEDIDO
   end
   object Edit1: TEdit
     Left = 534
-    Top = 374
+    Top = 380
     Width = 121
     Height = 27
     Font.Charset = DEFAULT_CHARSET
@@ -1298,11 +1298,24 @@ object PEDIDO: TPEDIDO
   end
   object Button2: TButton
     Left = 280
-    Top = 379
+    Top = 385
     Width = 137
     Height = 25
     Caption = 'Finalizar(F10)'
     TabOrder = 6
     OnClick = Button2Click
+  end
+  object RadioGroup1: TRadioGroup
+    Left = 296
+    Top = 294
+    Width = 121
+    Height = 81
+    Caption = 'Pagamento'
+    ItemIndex = 0
+    Items.Strings = (
+      'Dinheiro'
+      'Cart'#227'o D'#233'bito'
+      'Cart'#227'o Cr'#233'dito')
+    TabOrder = 7
   end
 end
