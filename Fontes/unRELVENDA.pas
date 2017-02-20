@@ -15,6 +15,7 @@ type
     Button2: TButton;
     Memo1: TMemo;
     procedure Button1Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -71,6 +72,12 @@ begin
 
 end;
 
+
+procedure TfrmRELVENDA.FormShow(Sender: TObject);
+begin
+   DateTimePicker1.DateTime := now;
+   DateTimePicker2.DateTime := now;
+end;
 
 procedure TfrmRELVENDA.GerarRelatorioCompleto;
 begin
@@ -173,7 +180,7 @@ begin
        end;
      end;
      Memo1.Lines.Add('');
-     Memo1.Lines.Add(PreencherString('Total do período',30 ) + FormatFloat(',0.00', total));
+     Memo1.Lines.Add(PreencherString('Total do periodo',30 ) + FormatFloat(',0.00', total));
 
 end;
 

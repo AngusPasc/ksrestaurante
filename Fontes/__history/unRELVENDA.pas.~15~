@@ -1,0 +1,190 @@
+unit unRELVENDA;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.ComCtrls;
+
+type
+  TfrmRELVENDA = class(TForm)
+    DateTimePicker1: TDateTimePicker;
+    DateTimePicker2: TDateTimePicker;
+    RadioGroup1: TRadioGroup;
+    Button1: TButton;
+    Button2: TButton;
+    Memo1: TMemo;
+    procedure Button1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    procedure GerarRelatorioResumo;
+    procedure GerarRelatorioCompleto;
+    function PreencherString(s : string;tam:Integer) : string;
+    procedure ImprimirPedido;
+  end;
+
+var
+  frmRELVENDA: TfrmRELVENDA;
+
+implementation
+
+{$R *.dfm}
+
+uses uDM;
+
+procedure TfrmRELVENDA.Button1Click(Sender: TObject);
+begin
+     case RadioGroup1.ItemIndex of
+     0: GerarRelatorioResumo;
+     1: GerarRelatorioCompleto;
+     end;
+   ImprimirPedido;
+end;
+
+procedure Tfrmrelvenda.ImprimirPedido;
+var
+  Impressora: TextFile;
+  StringList: TStringList;
+  IX: Integer;
+begin
+  try
+    //Texto := StringReplace(Texto, '%20', ' ', [rfReplaceAll]);
+    StringList := TStringList.Create;
+    StringList.Delimiter       := '|';
+    StringList.StrictDelimiter := True;
+    StringList.DelimitedText   := Memo1.Text;
+
+    AssignFile(Impressora, 'LPT1');
+    Rewrite(Impressora);
+    for IX := 0 to (StringList.Count - 1) do
+      Writeln(Impressora, StringList[IX]);
+    Writeln(Impressora, '');
+    Writeln(Impressora, '');
+    Writeln(Impressora, '');
+    CloseFile(Impressora);
+  finally
+    StringList.Free;
+  End;
+
+
+end;
+
+
+procedure TfrmRELVENDA.GerarRelatorioCompleto;
+begin
+// aqui
+end;
+
+procedure TfrmRELVENDA.GerarRelatorioResumo;
+var
+Pagamento : String;
+Total : Currency;
+begin
+     Memo1.Clear;
+     Total := 0;
+     Memo1.Lines.Add('Imperio Restaurante');
+     Memo1.Lines.Add('Relatorio de Vendas');
+     Memo1.Lines.Add(DatetoStr(DateTimePicker1.Date) + ' a ' + DatetoStr(DateTimePicker1.Date));
+     Memo1.Lines.Add('');
+     //Buscando Almoços
+     DM.cdsCONSULTA.close;
+     DM.cdsCONSULTA.CommandText := 'select pedido.cod_ped,pedido.fpag_ped,sum(item_pedido.vlruni_ipe * item_pedido.qtd_ipe) as total from pedido ' +
+                                   ' left outer join item_pedido on item_pedido.codped_ipe = pedido.cod_ped ' +
+                                   '  where pedido.tipo_ped =' + quotedstr('A') +
+                                   ' and pedido.data_ped between :data_ini and :data_fim' +
+                                   ' group by pedido.cod_ped,pedido.fpag_ped' ;
+     DM.cdsCONSULTA.Params.ParamByName('Data_INI').AsDate := DateTimePicker1.Date;
+     DM.cdsCONSULTA.Params.ParamByName('Data_FIM').AsDate := DateTimePicker2.Date;
+
+     DM.cdsCONSULTA.Open;
+     if not DM.cdsCONSULTA.IsEmpty then
+     begin
+       Memo1.Lines.Add('Almoço');
+       DM.cdsCONSULTA.First;
+       while not DM.cdsCONSULTA.Eof do
+       begin
+          case DM.cdsCONSULTA.FieldByName('FPAG_PED').AsInteger of
+                0: Pagamento := 'Dinheiro';
+                1: Pagamento := 'Cartao Debito';
+                2: Pagamento := 'Cartao Credito';
+          end;
+          Memo1.Lines.Add(PreencherString(DM.cdsCONSULTA.FieldByName('COD_PED').AsString,15) + PreencherString(Pagamento,15) +
+                                         PreencherString(FormatFloat(',0.00', DM.cdsCONSULTA.FieldByName('total').AsCurrency),8));
+           DM.cdsCONSULTA.Next;
+       end;
+     end;
+
+     Memo1.Lines.Add('');
+     //Buscando Jantar
+     DM.cdsCONSULTA.close;
+     DM.cdsCONSULTA.CommandText := 'select pedido.cod_ped,pedido.fpag_ped,sum(item_pedido.vlruni_ipe * item_pedido.qtd_ipe) as total from pedido ' +
+                                   ' left outer join item_pedido on item_pedido.codped_ipe = pedido.cod_ped ' +
+                                   '  where pedido.tipo_ped =' + quotedstr('N') +
+                                   ' and pedido.data_ped between :data_ini and :data_fim' +
+                                   ' group by pedido.cod_ped,pedido.fpag_ped' ;
+     DM.cdsCONSULTA.Params.ParamByName('Data_INI').AsDate := DateTimePicker1.Date;
+     DM.cdsCONSULTA.Params.ParamByName('Data_FIM').AsDate := DateTimePicker2.Date;
+
+     DM.cdsCONSULTA.Open;
+     if not DM.cdsCONSULTA.IsEmpty then
+     begin
+       Memo1.Lines.Add('Jantar');
+       DM.cdsCONSULTA.First;
+       while not DM.cdsCONSULTA.Eof do
+       begin
+          case DM.cdsCONSULTA.FieldByName('FPAG_PED').AsInteger of
+                0: Pagamento := 'Dinheiro';
+                1: Pagamento := 'Cartao Debito';
+                2: Pagamento := 'Cartao Credito';
+          end;
+          Memo1.Lines.Add(PreencherString(DM.cdsCONSULTA.FieldByName('COD_PED').AsString,15) + PreencherString(Pagamento,15) +
+                                         PreencherString(FormatFloat(',0.00', DM.cdsCONSULTA.FieldByName('total').AsCurrency),8));
+           DM.cdsCONSULTA.Next;
+       end;
+     end;
+      Memo1.Lines.Add('');
+    //Adicionando os totais
+    DM.cdsCONSULTA.close;
+     DM.cdsCONSULTA.CommandText := 'select pedido.fpag_ped,sum(item_pedido.vlruni_ipe * item_pedido.qtd_ipe) as total from pedido ' +
+                                   ' left outer join item_pedido on item_pedido.codped_ipe = pedido.cod_ped ' +
+                                   '  where pedido.data_ped between :data_ini and :data_fim' +
+                                   ' group by pedido.fpag_ped' ;
+     DM.cdsCONSULTA.Params.ParamByName('Data_INI').AsDate := DateTimePicker1.Date;
+     DM.cdsCONSULTA.Params.ParamByName('Data_FIM').AsDate := DateTimePicker2.Date;
+
+     DM.cdsCONSULTA.Open;
+     if not DM.cdsCONSULTA.IsEmpty then
+     begin
+       Memo1.Lines.Add('Total por forma de pagamento');
+       DM.cdsCONSULTA.First;
+       while not DM.cdsCONSULTA.Eof do
+       begin
+          case DM.cdsCONSULTA.FieldByName('FPAG_PED').AsInteger of
+                0: Pagamento := 'Dinheiro';
+                1: Pagamento := 'Cartao Debito';
+                2: Pagamento := 'Cartao Credito';
+          end;
+          Memo1.Lines.Add(PreencherString(Pagamento,15) +
+                                         PreencherString(FormatFloat(',0.00', DM.cdsCONSULTA.FieldByName('total').AsCurrency),8));
+           Total := total + Dm.cdsCONSULTA.FieldByName('total').AsCurrency;
+           DM.cdsCONSULTA.Next;
+       end;
+     end;
+     Memo1.Lines.Add('');
+     Memo1.Lines.Add(PreencherString('Total do período',30 ) + FormatFloat(',0.00', total));
+
+end;
+
+function TfrmRELVenda.PreencherString(s : string;tam:Integer) : string;
+begin
+result := s;
+if length(s) >= tam then
+exit;
+repeat
+result := result + ' ';
+until length(result) = tam;
+end;
+
+end.

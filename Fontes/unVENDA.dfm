@@ -59,11 +59,10 @@ object frmVENDA: TfrmVENDA
     Width = 97
     Height = 21
     Enabled = False
-    ItemIndex = 0
     TabOrder = 1
     Text = 'Padr'#227'o'
     Items.Strings = (
-      'Padr'#227'o'
+      'Padrao'
       '1'
       '2'
       '3'

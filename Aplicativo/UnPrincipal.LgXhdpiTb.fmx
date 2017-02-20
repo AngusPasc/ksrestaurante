@@ -1,0 +1,16 @@
+inherited Form1_LgXhdpiTb: TForm1_LgXhdpiTb
+  ClientHeight = 829
+  ClientWidth = 480
+  DesignerMasterStyle = 3
+  inherited Button1: TButton
+    Position.X = 152.000000000000000000
+    Size.Width = 217.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Entrar'
+  end
+  inherited Button2: TButton
+    Position.X = 240.000000000000000000
+    Position.Y = 752.000000000000000000
+    Text = 'Configura'#231#245'es'
+  end
+end

@@ -76,12 +76,11 @@ begin
       DM.cdsCONSULTA.First;
       while not DM.cdsCONSULTA.eof do
       begin
-        Memo1.Lines.Add(PreencherString(DM.cdsCONSULTA.FieldByName('DESC_ITE').AsString,26) +
-                        PreencherString(vartostr(DM.cdsCONSULTA.FieldByName('QTD_IPE').AsCurrency),8) +
-                        PreencherString(vartostr(DM.cdsCONSULTA.FieldByName('VLRUNI_IPE').AsCurrency),8) +
-                        PreencherString(
-                        vartostr(DM.cdsCONSULTA.FieldByName('QTD_IPE').AsCurrency * DM.cdsCONSULTA.FieldByName('VLRUNI_IPE').AsCurrency),8));
-
+        Memo1.Lines.Add(PreencherString(DM.cdsCONSULTA.FieldByName('DESC_ITE').AsString,23) +
+                        PreencherString(FormatFloat(',0.00', StrToFloat(vartostr(DM.cdsCONSULTA.FieldByName('QTD_IPE').AsCurrency))),8) +
+                        PreencherString(FormatFloat(',0.00', StrToFloat(vartostr(DM.cdsCONSULTA.FieldByName('VLRUNI_IPE').AsCurrency))),10) +
+                        PreencherString(FormatFloat(',0.00', StrToFloat(vartostr(DM.cdsCONSULTA.FieldByName('QTD_IPE').AsCurrency * DM.cdsCONSULTA.FieldByName('VLRUNI_IPE').AsCurrency)))
+                        ,8));
         Total := Total +  (DM.cdsCONSULTA.FieldByName('QTD_IPE').AsCurrency * DM.cdsCONSULTA.FieldByName('VLRUNI_IPE').AsCurrency);
         DM.cdsCONSULTA.Next;
       end;
@@ -97,7 +96,8 @@ procedure TPEDIDO.Button2Click(Sender: TObject);
 begin
 GravarPagamento;
 ImprimirPedido;
-
+Memo1.Clear;
+Edit1.Text := 'R$ 0,00';
 end;
 
 procedure TPEDIDO.ImprimirPedido;
@@ -140,6 +140,7 @@ end;
 procedure TPEDIDO.FormShow(Sender: TObject);
 begin
     Memo1.Clear;
+    DateTimePicker1.DateTime := now;
 end;
 
 procedure TPEDIDO.GerarNovo;
@@ -203,13 +204,13 @@ begin
      StrPedido := 'Pedido: ' + vartostr(seq_pedido);
      StrData :=   'Data: ' + DateTimeToStr(DateTimePicker1.DateTime);
      StrMesa :=     'Mesa:' + ComboBox1.Text;
-     StrCabecalho :=  'Item                    Qtd    Vlr.Uni    Valor';
+     StrCabecalho :=  'Item                   Qtd    Vlr.Uni    Valor';
      Memo1.Lines.Add('Pedido: ' + vartostr(seq_pedido));
      Memo1.Lines.Add('Data: ' + DateTimeToStr(DateTimePicker1.DateTime));
      Memo1.Lines.Add('Mesa:' + ComboBox1.Text);
      Memo1.Lines.Add('');
 
-     Memo1.Lines.Add('Item                      Qtd    Vlr.Uni    Valor');
+     Memo1.Lines.Add('Item                   Qtd    Vlr.Uni    Valor');
 
 end;
 

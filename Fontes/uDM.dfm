@@ -4,9 +4,7 @@ object DM: TDM
   Width = 777
   object Banco: TFDConnection
     Params.Strings = (
-      
-        'Database=C:\Users\Larissa\Documents\GitHub\ksrestaurante\Banco\B' +
-        'ANCO.FDB'
+      'Database=E:\imperio\Banco\BANCO.FDB'
       'User_Name=sysdba'
       'Password=masterkey'
       'DriverID=FB')

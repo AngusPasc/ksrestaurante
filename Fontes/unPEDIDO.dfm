@@ -1239,11 +1239,10 @@ object PEDIDO: TPEDIDO
     Top = 64
     Width = 145
     Height = 21
-    ItemIndex = 0
     TabOrder = 1
-    Text = 'Padr'#227'o'
+    Text = 'Padrao'
     Items.Strings = (
-      'Padr'#227'o'
+      'Padrao'
       '1'
       '2'
       '3'
