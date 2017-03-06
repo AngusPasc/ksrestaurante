@@ -1,5 +1,7 @@
 program KSRestauranteApp;
 
+{$R *.dres}
+
 uses
   System.StartUpCopy,
   FMX.Forms,

@@ -1,0 +1,30 @@
+object MainmForm: TMainmForm
+  Left = 0
+  Top = 0
+  ClientHeight = 480
+  ClientWidth = 320
+  Caption = 'MainmForm'
+  TitleButtons = <>
+  PixelsPerInch = 96
+  TextHeight = 13
+  ScrollPosition = 0
+  ScrollHeight = 47
+  PlatformData = {}
+  object UnimDBGrid1: TUnimDBGrid
+    Left = 8
+    Top = 24
+    Width = 289
+    Height = 265
+    Hint = ''
+    DataSource = UniServerModule.DataSource1
+  end
+  object UnimButton1: TUnimButton
+    Left = 40
+    Top = 312
+    Width = 225
+    Height = 47
+    Hint = ''
+    Caption = 'Carregar'
+    OnClick = UnimButton1Click
+  end
+end

@@ -1,14 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
-  <Transactions>
-    <Transaction>2017/02/20 11:55:52.208,=C:\Users\Larissa\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>2017/02/20 12:01:21.834,=C:\Users\Larissa\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
-    <Transaction>2017/02/20 12:02:42.382,C:\Users\Larissa\Documents\GitHub\ksrestaurante\Aplicativo\UnMesas.fmx=C:\Users\Larissa\Documents\Embarcadero\Studio\Projects\Unit2.fmx</Transaction>
-    <Transaction>2017/02/20 12:02:42.382,C:\Users\Larissa\Documents\GitHub\ksrestaurante\Aplicativo\UnMesas.pas=C:\Users\Larissa\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
-    <Transaction>2017/02/20 12:03:04.117,C:\Users\Larissa\Documents\GitHub\ksrestaurante\Aplicativo\UnPrincipal.fmx=C:\Users\Larissa\Documents\Embarcadero\Studio\Projects\Unit1.fmx</Transaction>
-    <Transaction>2017/02/20 12:03:04.117,C:\Users\Larissa\Documents\GitHub\ksrestaurante\Aplicativo\UnPrincipal.pas=C:\Users\Larissa\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>2017/02/20 12:03:29.105,C:\Users\Larissa\Documents\GitHub\ksrestaurante\Aplicativo\KSRestauranteApp.dproj=C:\Users\Larissa\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+	<Transactions>
+    <Transaction>2017/02/20 11:55:52.000.208,=C:\Users\Larissa\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2017/02/20 12:01:21.000.834,=C:\Users\Larissa\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2017/02/20 12:02:42.000.382,C:\Users\Larissa\Documents\Embarcadero\Studio\Projects\Unit2.pas=C:\Users\Larissa\Documents\GitHub\ksrestaurante\Aplicativo\UnMesas.pas</Transaction>
+    <Transaction>2017/02/20 12:02:42.000.382,C:\Users\Larissa\Documents\Embarcadero\Studio\Projects\Unit2.fmx=C:\Users\Larissa\Documents\GitHub\ksrestaurante\Aplicativo\UnMesas.fmx</Transaction>
+    <Transaction>2017/02/20 12:03:04.000.117,C:\Users\Larissa\Documents\Embarcadero\Studio\Projects\Unit1.fmx=C:\Users\Larissa\Documents\GitHub\ksrestaurante\Aplicativo\UnPrincipal.fmx</Transaction>
+    <Transaction>2017/02/20 12:03:04.000.117,C:\Users\Larissa\Documents\Embarcadero\Studio\Projects\Unit1.pas=C:\Users\Larissa\Documents\GitHub\ksrestaurante\Aplicativo\UnPrincipal.pas</Transaction>
+    <Transaction>2017/02/20 12:03:29.000.105,C:\Users\Larissa\Documents\Embarcadero\Studio\Projects\Project1.dproj=C:\Users\Larissa\Documents\GitHub\ksrestaurante\Aplicativo\KSRestauranteApp.dproj</Transaction>
+    <Transaction>2017/02/20 15:44:32.000.525,=C:\Users\Larissa\Documents\GitHub\ksrestaurante\Aplicativo\Imagens\Mesas\3-ocupada.png</Transaction>
+    <Transaction>2017/02/20 15:44:32.000.467,=C:\Users\Larissa\Documents\GitHub\ksrestaurante\Aplicativo\Imagens\Mesas\2-ocupada.png</Transaction>
+    <Transaction>2017/02/20 15:44:32.000.494,=C:\Users\Larissa\Documents\GitHub\ksrestaurante\Aplicativo\Imagens\Mesas\3-livre.png</Transaction>
+    <Transaction>2017/02/20 15:44:32.000.396,=C:\Users\Larissa\Documents\GitHub\ksrestaurante\Aplicativo\Imagens\Mesas\1-livre.png</Transaction>
+    <Transaction>2017/02/20 15:44:32.000.558,=C:\Users\Larissa\Documents\GitHub\ksrestaurante\Aplicativo\Imagens\Mesas\4-livre.png</Transaction>
+    <Transaction>2017/02/20 15:44:32.000.418,=C:\Users\Larissa\Documents\GitHub\ksrestaurante\Aplicativo\Imagens\Mesas\1-ocupada.png</Transaction>
+    <Transaction>2017/02/20 15:44:32.000.441,=C:\Users\Larissa\Documents\GitHub\ksrestaurante\Aplicativo\Imagens\Mesas\2-livre.png</Transaction>
+    <Transaction>2017/02/20 15:44:32.000.593,=C:\Users\Larissa\Documents\GitHub\ksrestaurante\Aplicativo\Imagens\Mesas\4-ocupada.png</Transaction>
   </Transactions>
-  <ActiveMobileDevice>   <NoProfile iOSSimulator="iPhone5"/>
-  </ActiveMobileDevice>
+	<ActiveMobileDevice>
+		<NoProfile iOSSimulator="iPhone5"/>
+	</ActiveMobileDevice>
 </BorlandProject>

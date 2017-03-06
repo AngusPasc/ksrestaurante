@@ -11,6 +11,7 @@ type
   TForm1 = class(TForm)
     Button1: TButton;
     Button2: TButton;
+    procedure Button1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -24,5 +25,14 @@ implementation
 
 {$R *.fmx}
 {$R *.LgXhdpiTb.fmx ANDROID}
+
+uses UnMesas;
+{$R *.LgXhdpiTb.fmx ANDROID}
+
+procedure TForm1.Button1Click(Sender: TObject);
+begin
+  Application.CreateForm(TForm2,Form2);
+  Form2.Show;
+end;
 
 end.

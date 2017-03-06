@@ -6,7 +6,7 @@
         <MainSource>KSRestauranteApp.dpr</MainSource>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Debug</Config>
-        <Platform Condition="'$(Platform)'==''">Win32</Platform>
+        <Platform Condition="'$(Platform)'==''">Android</Platform>
         <TargetedPlatforms>1119</TargetedPlatforms>
         <AppType>Application</AppType>
     </PropertyGroup>
@@ -310,6 +310,38 @@
             <Form>Form2</Form>
             <FormType>fmx</FormType>
         </DCCReference>
+        <RcItem Include="Imagens\Mesas\1-livre.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>PngImage_1</ResourceId>
+        </RcItem>
+        <RcItem Include="Imagens\Mesas\1-ocupada.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>PngImage_2</ResourceId>
+        </RcItem>
+        <RcItem Include="Imagens\Mesas\2-livre.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>PngImage_3</ResourceId>
+        </RcItem>
+        <RcItem Include="Imagens\Mesas\2-ocupada.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>PngImage_4</ResourceId>
+        </RcItem>
+        <RcItem Include="Imagens\Mesas\3-livre.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>PngImage_5</ResourceId>
+        </RcItem>
+        <RcItem Include="Imagens\Mesas\3-ocupada.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>PngImage_6</ResourceId>
+        </RcItem>
+        <RcItem Include="Imagens\Mesas\4-livre.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>PngImage_7</ResourceId>
+        </RcItem>
+        <RcItem Include="Imagens\Mesas\4-ocupada.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>PngImage_8</ResourceId>
+        </RcItem>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -332,17 +364,19 @@
                 </Source>
             </Delphi.Personality>
             <Deployment Version="3">
-                <DeployFile LocalName="$(BDS)\Redist\osx32\libcgunwind.1.0.dylib" Class="DependencyModule">
-                    <Platform Name="OSX32">
+                <DeployFile LocalName="Imagens\Mesas\3-livre.png" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Imagens\Mesas\1-ocupada.png" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="$(BDS)\Redist\iossimulator\libcgunwind.1.0.dylib" Class="DependencyModule">
-                    <Platform Name="iOSSimulator">
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="$(BDS)\Redist\iossimulator\libPCRE.dylib" Class="DependencyModule">
                     <Platform Name="iOSSimulator">
                         <Overwrite>true</Overwrite>
                     </Platform>
@@ -352,9 +386,55 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
+                <DeployFile LocalName="Imagens\Mesas\4-livre.png" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\Redist\osx32\libcgunwind.1.0.dylib" Class="DependencyModule">
+                    <Platform Name="OSX32">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Imagens\Mesas\4-ocupada.png" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Imagens\Mesas\1-livre.png" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="Win32\Debug\KSRestauranteApp.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>KSRestauranteApp.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\Redist\iossimulator\libPCRE.dylib" Class="DependencyModule">
+                    <Platform Name="iOSSimulator">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Imagens\Mesas\3-ocupada.png" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Imagens\Mesas\2-ocupada.png" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Imagens\Mesas\2-livre.png" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
