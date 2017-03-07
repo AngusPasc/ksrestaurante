@@ -1,0 +1,21 @@
+object MainmForm: TMainmForm
+  Left = 0
+  Top = 0
+  ClientHeight = 553
+  ClientWidth = 780
+  Caption = 'Imp'#233'rio Restaurante'
+  TitleButtons = <>
+  PixelsPerInch = 96
+  TextHeight = 13
+  ScrollPosition = 0
+  ScrollHeight = 47
+  PlatformData = {}
+  object UnimButton1: TUnimButton
+    Left = 8
+    Top = 160
+    Width = 764
+    Height = 47
+    Hint = ''
+    Caption = 'UnimButton1'
+  end
+end

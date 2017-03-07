@@ -4,5 +4,8 @@
     <Transaction>2017/03/06 16:06:29.000.226,=C:\Users\Larissa\Desktop\UNIGUI\MainModule.pas</Transaction>
     <Transaction>2017/03/06 16:06:29.000.183,=C:\Users\Larissa\Desktop\UNIGUI\ServerModule.pas</Transaction>
     <Transaction>2017/03/06 16:06:30.000.616,=C:\Users\Larissa\Desktop\UNIGUI\Mainm.pas</Transaction>
+    <Transaction>2017/03/06 20:42:06.000.456,=C:\Users\Larissa\Documents\GitHub\ksrestaurante\UNIGUI\Unit1.pas</Transaction>
+    <Transaction>2017/03/06 20:45:27.000.526,C:\Users\Larissa\Documents\GitHub\ksrestaurante\UNIGUI\unConfig.pas=C:\Users\Larissa\Documents\GitHub\ksrestaurante\UNIGUI\Unit1.pas</Transaction>
+    <Transaction>2017/03/06 20:45:27.000.526,C:\Users\Larissa\Documents\GitHub\ksrestaurante\UNIGUI\unConfig.dfm=C:\Users\Larissa\Documents\GitHub\ksrestaurante\UNIGUI\Unit1.dfm</Transaction>
   </Transactions>
 </BorlandProject>
